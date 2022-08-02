@@ -1,3 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+</head>
+
+<body>
+    <div class="col-12">
+        <div style="padding-left: 25px ;">
+            <label style="padding-right: 1%;">รหัสลูกค้า</label>
+            <input matInput placeholder="รหัสลูกค้า" value="00" style="width: 5%; text-align: center;">
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="ที่อยู่" value="" style="width: 25%; text-align: center;">
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="" value="" style="width: 5%; text-align: center;">
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="" value="" style="width: 5%; text-align: center;">
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="" value="" style="width: 5%; text-align: center;">
+
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="name" value="{{Name}}" style="width: 10%; text-align: center;">
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="date" value="{{today | date:'dd/MM/yyyy'}}"
+                style="width: 10%; text-align: center;">
+
+            <label style="padding-right: 1%;"></label>
+            <input matInput placeholder="time" value="{{today | date:'h:mm:ss'}}"
+                style="width: 10%; text-align: center;">
+        </div>
+    </div>
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="col-md-12">
+            <br>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">รายการขายสินค้า</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <input class="form-control form-control-lg" type="text"
+                                                placeholder="รหัสสินค้า" id="inputLarge" name="ID" [(ngModel)]="product"
+                                                (keyup.enter)="onEnter()">
+                                        </div>
+                                        <div class="col-2">
+                                            <button type="submit" class="btn btn-primary form-control-lg">ค้นหา</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body p-0"> -->
+                                    <div class="table-wrap">
+                                        <table class="table table-bordered " id="myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ลำดับ</th>
+                                                    <th scope="col">รหัสสินค้า</th>
+                                                    <th scope="col">จำนวน</th>
+                                                    <th scope="col">หน่วย</th>
+                                                    <th scope="col">รายละเอียด</th>
+                                                    <th scope="col">ราคา</th>
+                                                    <th scope="col">ส่วนลด</th>
+                                                    <th scope="col">รวมมูลค่า</th>
+                                                    <th scope="col">Vat</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngFor="let item of listdata; let i = index">
+                                                <tr *ngIf="item.product_id === item.product_id">
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{item.product_id}}</td>
+                                                    <td>{{item.count}}</td>
+                                                    <td>{{item.unit}}</td>
+                                                    <td>{{item.details}}</td>
+                                                    <td>{{item.price}}</td>
+                                                    <td>{{item.discount}}</td>
+                                                    <td>{{item.total_value}}</td>
+                                                    <td>{{item.vat}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- <table class="table table-bordered table-striped mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 20px">ลำดับ</th>
+                                                <th class="text-center" width="30%">รายการขาย</th>
+                                                <th class="text-center">จำนวน</th>
+                                                <th class="text-center">หน่วยนับ</th>
+                                                <th class="text-center" width="15%">ราคาต่อหน่วย</th>
+                                                <th class="text-center">ส่วนลด</th>
+                                                <th class="text-center">รวมมูลค่า</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1.</td>
+                                                <td>ปูน</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">ถุง</td>
+                                                <td class="text-right">200.00</td>
+                                                <td class="text-right">5.00</td>
+                                                <td class="text-right">195.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2.</td>
+                                                <td>ทรายโขง</td>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">คิว</td>
+                                                <td class="text-right">200.00</td>
+                                                <td class="text-right">0.00</td>
+                                                <td class="text-right">200.00</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table> -->
+                                <!-- </div> -->
+                                <!-- /.card-body -->
+
+                            </div>
+                            <!-- /.card -->
+
+                        </div>
+                        <!--/.col (left) -->
+                        <!-- right column -->
+                        <!-- <div class="col-md-4">
+                            <div class="card card-success">
+                                <div class="card-header">
+                                    <h3 class="card-title">โฆษณา</h3>
+                                </div>
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
+
+                        <div class="col-md-12">
+                            <!-- Form Element sizes -->
+                            <div class="card card-success">
+                                <form class="form-horizontal">
+                                    <div class="card-body bg-black">
+                                        <div class="form-group row ">
+                                            <label class="col-md-2 col-form-label">
+                                                <h1 class="text-warning text-right">รับเงิน</h1>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="email" class="form-control form-control-lg  bg-dark">
+                                            </div>
+                                            <label class="col-md-2 col-form-label">
+                                                <h1 class="text-success text-right">เงินทอน</h1>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="email" class="form-control form-control-lg bg-dark">
+                                            </div>
+
+                                            <label class="col-md-2 col-form-label">
+                                                <h1 class="text-primary text-right">รวมเงิน</h1>
+                                            </label>
+                                            <div class="col-md-10">
+                                                <input type="email" class="form-control form-control-lg bg-dark">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+
+                        <!--/.col (right) -->
+                    </div>
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+</body>
+
+</html>
+
+
 <!-- <mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
@@ -78,7 +290,9 @@
     <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightblue'">4</mat-grid-tile>
 </mat-grid-list> -->
 <br>
-<div class="col-12">
+
+
+<!-- <div class="col-12">
     <div style="padding-left: 25px ;">
         <label style="padding-right: 1%;">รหัสลูกค้า</label>
         <input matInput placeholder="รหัสลูกค้า" value="00" style="width: 5%; text-align: center;">
@@ -108,8 +322,8 @@
     </div>
 </div>
 <br>
-<!-- <label class="col-form-label col-form-label-lg" for="inputLarge">รหัสสินค้า</label> -->
-<input class="form-control form-control-lg" type="text" placeholder="รหัสสินค้า" id="inputLarge" [(ngModel)]="product" (keyup.enter)="onEnter()">
+<input class="form-control form-control-lg" type="text" placeholder="รหัสสินค้า" id="inputLarge" name="ID"
+    [(ngModel)]="product" (keyup.enter)="onEnter()">
 <div class="col-12">
     <table class="table table-hover" id="myTable">
         <thead>
@@ -122,11 +336,11 @@
                 <th scope="col">ราคา</th>
                 <th scope="col">ส่วนลด</th>
                 <th scope="col">รวมมูลค่า</th>
-                <th scope="col">V</th>
+                <th scope="col">Vat</th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let item of listdata; let i = index">
+        <tbody *ngFor="let item of listdata; let i = index">
+            <tr *ngIf="item.product_id === item.product_id">
                 <td>{{i+1}}</td>
                 <td>{{item.product_id}}</td>
                 <td>{{item.count}}</td>
@@ -139,4 +353,4 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div> -->
