@@ -1,0 +1,142 @@
+<!-- <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar> -->
+
+<!-- <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+        [style.background]="tile.color">
+        {{tile.text}}
+    </mat-grid-tile>
+</mat-grid-list> -->
+
+<!-- <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightblue'">
+        <mat-form-field appearance="outline">
+            <mat-label>รหัสลูกค้า</mat-label>
+            <input matInput placeholder="รหัสลูกค้า" value="00">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>ชื่อลูกค้า</mat-label>
+            <input matInput placeholder="ชื่อลูกค้า" value="">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>ที่อยู่</mat-label>
+            <input matInput placeholder="ที่อยู่" value="">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>วันที่</mat-label>
+            <input matInput placeholder="วันที่" value="">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="4" [style.background]="'lightblue'">
+        <div class="demo-button-container">
+            <button mat-raised-button (click)="addData()" class="demo-button">
+                Add data
+            </button>
+            <button mat-raised-button [disabled]="!dataSource.length" (click)="removeData()" class="demo-button">
+                Remove data
+            </button>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>No.</th>
+                <td mat-cell *matCellDef="let element">{{element.position}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef>Weight</th>
+                <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef>Symbol</th>
+                <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightblue'">3</mat-grid-tile>
+    <mat-grid-tile [colspan]="4" [rowspan]="1" [style.background]="'lightblue'">4</mat-grid-tile>
+</mat-grid-list> -->
+<br>
+<div class="col-12">
+    <div style="padding-left: 25px ;">
+        <label style="padding-right: 1%;">รหัสลูกค้า</label>
+        <input matInput placeholder="รหัสลูกค้า" value="00" style="width: 5%; text-align: center;">
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="ที่อยู่" value="" style="width: 25%; text-align: center;">
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="" value="" style="width: 5%; text-align: center;">
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="" value="" style="width: 5%; text-align: center;">
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="" value="" style="width: 5%; text-align: center;">
+
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="name" value="{{Name}}" style="width: 10%; text-align: center;">
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="date" value="{{today | date:'dd/MM/yyyy'}}"
+            style="width: 10%; text-align: center;">
+
+        <label style="padding-right: 1%;"></label>
+        <input matInput placeholder="time" value="{{today | date:'h:mm:ss'}}" style="width: 10%; text-align: center;">
+    </div>
+</div>
+<br>
+<!-- <label class="col-form-label col-form-label-lg" for="inputLarge">รหัสสินค้า</label> -->
+<input class="form-control form-control-lg" type="text" placeholder="รหัสสินค้า" id="inputLarge" [(ngModel)]="product" (keyup.enter)="onEnter()">
+<div class="col-12">
+    <table class="table table-hover" id="myTable">
+        <thead>
+            <tr>
+                <th scope="col">ลำดับ</th>
+                <th scope="col">รหัสสินค้า</th>
+                <th scope="col">จำนวน</th>
+                <th scope="col">หน่วย</th>
+                <th scope="col">รายละเอียด</th>
+                <th scope="col">ราคา</th>
+                <th scope="col">ส่วนลด</th>
+                <th scope="col">รวมมูลค่า</th>
+                <th scope="col">V</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listdata; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.product_id}}</td>
+                <td>{{item.count}}</td>
+                <td>{{item.unit}}</td>
+                <td>{{item.details}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.discount}}</td>
+                <td>{{item.total_value}}</td>
+                <td>{{item.vat}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
